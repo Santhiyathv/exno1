@@ -24,114 +24,125 @@ STEP 6: Use zscore of to remove outliers
 
 # Coding and Output
 ```
-          import pandas as pd
-          import numpy as np
-          import seaborn as sns
-          import os 
-          df=pd.read_csv("SAMPLEIDS.csv")
-          df
+import pandas as pd
+df=pd.read_csv("SAMPLEIDS.csv")
+df
 ```
-          ![Screenshot 2025-03-12 144415](https://github.com/user-attachments/assets/e56a3c74-3cbf-4dab-b013-93cd114dfa3c)
-
-        ``` 
-        df.isnull().sum()
-        ```
-          ![image](https://github.com/user-attachments/assets/9630ab0e-065f-4023-b12b-a41d49e8b8a6)
-          df.isnull().any()
-          ![image](https://github.com/user-attachments/assets/a0400585-6fcd-4d89-b971-691a8d7e079d)
-          df.dropna()
-          ![image](https://github.com/user-attachments/assets/e381e160-3b50-40ca-914f-9f06169d4e8d)
-          df.fillna(0)
-          ![image](https://github.com/user-attachments/assets/78c27c1d-f992-4a3e-81a1-53c976953cfe)
-          df.fillna(method = 'ffill')
-          ![image](https://github.com/user-attachments/assets/fe20614b-a09b-419e-8722-81e85dbfdac5)
-          df.fillna(method = 'bfill')
-         ![image](https://github.com/user-attachments/assets/6b3a4975-0484-420d-b168-7013d13b62fb)
-         df_dropped = df.dropna()
-           df_dropped
-          ![image](https://github.com/user-attachments/assets/aa41cf3a-33b3-444b-bb34-38e2aa0d24f0)
-        df.fillna({'GENDER':'MALE','NAME':'KANISHKAR','ADDRESS':'POONAMALEE','M1':98,'M2':87,'M3':76,'M4':92,'TOTAL':305,'AVG':89.999999})
-        ![image](https://github.com/user-attachments/assets/68068df8-11b9-4db2-8313-d46bf5bbcdf4)
-                 import pandas as pd
-         
-         ir=pd.read_csv('iris.csv')
-         ir
-         ![image](https://github.com/user-attachments/assets/2be72c11-60fd-4ddf-a480-bc40756d6b94)
-                  ir.describe()
-         ![image](https://github.com/user-attachments/assets/0d96aa40-2214-462f-b636-4439e80e5407)
-                  import seaborn as sns
-         
-         sns.boxplot(x='sepal_width',data=ir)
-         ![image](https://github.com/user-attachments/assets/94f6cc9c-9fad-4132-9ef6-34b740d35cb0)
-                    c1=ir.sepal_width.quantile(0.25)
-           c3=ir.sepal_width.quantile(0.75)
-           iq=c3-c1
-           print(c3)
-           3.3
-                       rid=ir[((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
-            rid['sepal_width']
-            ![image](https://github.com/user-attachments/assets/c07384b5-a6cc-4a17-934f-9bb51731084e)
-                        delid=ir[~((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
-            delid
-            ![image](https://github.com/user-attachments/assets/742c3322-3a83-4eda-ad41-ed7bd4a51baf)
-                       sns.boxplot(x='sepal_width',data=delid)
-            ![image](https://github.com/user-attachments/assets/438427ca-a537-43d9-9184-baa1b3bd3c0c)
-                        import matplotlib.pyplot as plt
-            import pandas as pd
-            import numpy as np
-            import scipy.stats as stats
-
-            dataset=pd.read_csv("heights.csv")
-            dataset
-            ![image](https://github.com/user-attachments/assets/a17293e5-a27b-47eb-8009-08e8471ad59b)
-                        df = pd.read_csv("heights.csv")
-            q1 = df['height'].quantile(0.25)
-            q2 = df['height'].quantile(0.5)
-            q3 = df['height'].quantile(0.75)
-            
-            iqr = q3-q1
-            iqr
-            ![image](https://github.com/user-attachments/assets/ce91ea9d-886e-45f2-9f2d-94772d25292a)
-                    low = q1 - 1.5*iqr
-        low
-        ![image](https://github.com/user-attachments/assets/d87d25c0-815e-4155-9047-7089852dad4a)
-                high = q3 + 1.5*iqr
-        high
-        ![image](https://github.com/user-attachments/assets/e1a58d1a-39b3-4dec-aea1-52928f2644f2)
-                df1 = df[((df['height'] >=low)& (df['height'] <=high))]
-        df1
-        ![image](https://github.com/user-attachments/assets/d5543f63-15ef-4685-90fb-8dd9379b549d)
-                z = np.abs(stats.zscore(df['height']))
-        z
-        ![image](https://github.com/user-attachments/assets/d1814947-3584-4be4-8dba-bd4aa26267dd)
-                df1 = df[z<3]
-        df1
-        ![image](https://github.com/user-attachments/assets/2f03b7bd-f392-4584-a2d8-3de726b77365)
+![image](https://github.com/user-attachments/assets/f586e4fe-b968-455e-bfeb-9bc26cd9d06a)
+```
+df.isnull().sum()
+```
+![image](https://github.com/user-attachments/assets/b4179e09-e8b6-4eb4-8358-171bfb99bc2d)
+```
+df.isnull().any()
+```
+![image](https://github.com/user-attachments/assets/c70e44e5-45f6-4f55-916d-7d4ed62a1db3)
+```
+df.dropna()
+```
+![image](https://github.com/user-attachments/assets/4914bf38-039f-4b1f-89e6-6e079cbd4105)
+```
+df.fillna(0)
+```
+![image](https://github.com/user-attachments/assets/e83389dd-ec1a-4b34-aaa3-7eb5a8914019)
+```
+df.fillna(method='ffill')
+```
+![image](https://github.com/user-attachments/assets/81842716-1fb6-42d7-a1ad-6270030f5f21)
+```
+df.fillna(method='bfill')
+```
+![image](https://github.com/user-attachments/assets/e5e09564-d4cf-42de-9cc3-664c4d3f85d7)
+```
+df_dropped = df.dropna()
+df_dropped
+```
+![image](https://github.com/user-attachments/assets/9fc67c07-1cdc-4dfd-a135-4c0d391b3440)
+```
+df.fillna({'GENDER':'MALE','NAME':'SRI','ADDRESS':'POONAMALEE','M1':98,'M2':87,'M3':76,'M4':92,'TOTAL':305,'AVG':89.999999})
+```
+![image](https://github.com/user-attachments/assets/48c0b14e-e8d3-4072-aa8e-021cfde991d7)
+```
+ir=pd.read_csv("/content/iris.csv")
+ir
+```
+![image](https://github.com/user-attachments/assets/c5d099aa-aea4-4e80-bf0f-6bf4a42ce527)
+```
+ir.describe()
+```
+![image](https://github.com/user-attachments/assets/daae6dfd-a29c-416f-9206-2034c71a8890)
+```
+import seaborn as sns
+sns.boxplot(x='sepal_width',data=ir)
+```
+![image](https://github.com/user-attachments/assets/4caaef6e-a74a-49ff-9bfc-48351e97f0a7)
+```
+q1=ir.sepal_width.quantile(0.25)
+q3=ir.sepal_width.quantile(0.75)
+iq=q3-q1
+print(q3)
+```
+![image](https://github.com/user-attachments/assets/4c68c961-6211-4576-856d-2e69bc02fdeb)
+```
+rid=ir[((ir.sepal_width<(q1-1.5*iq))|(ir.sepal_width>(q3+1.5*iq)))]
+rid['sepal_width']
+```
+![image](https://github.com/user-attachments/assets/d73aec93-6f0b-4557-8e65-e8f4a04caf60)
+```
+delid=ir[~((ir.sepal_width<(q1-1.5*iq))|(ir.sepal_width>(q3+1.5*iq)))]
+delid
+```
+![image](https://github.com/user-attachments/assets/fd2d624d-04a1-40bc-b2c9-716b8387097a)
+```
+sns.boxplot(x='sepal_width',data=delid)
+```
+![image](https://github.com/user-attachments/assets/6396e86a-6979-4bd0-ae80-0e3d43a4828d)
+```
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import scipy.stats as stats
 
 
-        
+dataset=pd.read_csv("heights.csv")
+dataset
+```
+![image](https://github.com/user-attachments/assets/56ed578b-e736-4dd7-aba9-68840b8daa45)
+```
+df = pd.read_csv("heights.csv")
+q1 = df['height'].quantile(0.25)
+q2 = df['height'].quantile(0.5)
+q3 = df['height'].quantile(0.75)
 
 
-
-
-            
-            
-
-
-           
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
+iqr = q3-q1
+iqr
+```
+![image](https://github.com/user-attachments/assets/7a0d745f-ebe6-4cf9-8d6f-c08fdd346eee)
+```
+low = q1- 1.5*iqr
+low
+```
+![image](https://github.com/user-attachments/assets/af7f624f-430a-4a22-82f9-61f0a422e32d)
+```
+high = q3 + 1.5*iqr
+high
+```
+![image](https://github.com/user-attachments/assets/24c202df-d5fb-4869-98f1-ccef44b681a1)
+```
+df1 = df[((df['height'] >=low)& (df['height'] <=high))]
+df1
+```
+![image](https://github.com/user-attachments/assets/447f35b8-8000-4e2c-a72e-849bf5e64a30)
+```
+z = np.abs(stats.zscore(df['height']))
+z
+```
+![image](https://github.com/user-attachments/assets/2a0928e5-354d-4f61-a1ea-cb1ffa0efc32)
+```
+df1 = df[z<3]
+df1
+```
+![image](https://github.com/user-attachments/assets/a371cdde-15fd-4292-9122-822805fb5f13)
 # Result
            Thus the given data successfully performed data cleaning and saved the cleaned data to a file.
